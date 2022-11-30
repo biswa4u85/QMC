@@ -1,0 +1,74 @@
+@import '~antd/lib/style/themes/default.less';
+
+.avatarOuter{
+  width:100%;
+  float: left;
+  .avatar {
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    position: relative;
+    .deleteBut{
+      position: absolute;
+      right: 0;
+      top: 0;
+      background: rgba(0, 0, 0, 0.5);
+      text-align: center;
+      i{
+        color: #fff;
+        font-size: 20px;
+      }
+    }
+  }
+}
+.avatar {
+  width: 144px;
+  height: 144px;
+  position: relative;
+  margin-bottom: 12px;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+}
+.deleteButNew{
+  position: absolute;
+  cursor: pointer;
+  right: 0px;
+  top: 0px;
+  z-index: 999;
+  text-align: center;
+  i{
+    color: #ff0000;
+    font-size: 20px;
+  }
+}
+.button_view {
+  width: 144px;
+  text-align: center;
+}
+
+.autocomplete{
+  position: absolute;
+  width:300px;
+  top: 35px;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  border-radius: 7px;
+  color: #999;
+  z-index: 999;
+  padding: 10px;
+  .suggestion-item {
+    padding: 20px;
+    text-align: left;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .suggestion-item--active {
+    padding: 20px;
+    background-color: #fafafa;
+  }
+}

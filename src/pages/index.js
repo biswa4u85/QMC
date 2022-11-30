@@ -4,6 +4,8 @@ import React from 'react';
 import Error404 from './errorPages/Error404';
 
 import { authRouteConfig } from './auth';
+import { dashboardConfig } from './dashboard';
+import { errorPagesConfigs } from './errorPages';
 
 const authorizedStructure = {
   fallbackPath: '/signin',
