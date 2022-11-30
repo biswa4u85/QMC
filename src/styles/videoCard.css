@@ -1,0 +1,71 @@
+.card {
+    width: 70%;
+    margin: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    box-shadow: #89cdee 0.4rem 0.2rem 0.5rem;
+  }
+  
+  .row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .image-container {
+    width: 9vw;
+    height: 9vw;
+    overflow: hidden;
+    position: relative;
+    border-radius: 1rem;
+    border: 4px solid #ede8fa;
+    background: linear-gradient(to right, #89cdee, #31abe8);
+  }
+  
+  .button {
+    width: 49%;
+    color: #31abe8;
+    display: flex;
+    cursor: pointer;
+    padding: 0.3rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+    background-color: #89cdee;
+  }
+  
+  #edit {
+    border-top-right-radius: 0.8rem;
+  }
+  
+  #delete {
+    border-top-left-radius: 0.8rem;
+  }
+  
+  .image-container > label {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    color: #fff;
+    display: flex;
+    padding: 1rem;
+    position: absolute;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+  
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  .customizer-option{
+    display: none!important;
+  }
