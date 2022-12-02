@@ -49,8 +49,13 @@ const ResetPassword = () => {
               <Col xs={24} md={12}>
                 <div className='login-card-header'>
                   <h3>
-                    <IntlMessages id='common.resetPassword' />
+                  FORGET USERNAME/PASSWORD?
                   </h3>
+                </div>
+                <div className='login-card-header'>
+                  <h5>
+                  Enter the OTP received
+                  </h5>
                 </div>
 
                 <Form
@@ -58,7 +63,6 @@ const ResetPassword = () => {
                   name='basic'
                   initialValues={{ remember: true }}
                   onFinish={onFinish}>
-
 
                   <Form.Item
                     name='code'
@@ -70,34 +74,15 @@ const ResetPassword = () => {
                       },
                     ]}>
                     <Input
-                      placeholder={'Code'}
+                      placeholder="Enter OTP"
                     />
                   </Form.Item>
 
-                  <Form.Item
-                    name='newPassword'
-                    className='form-field'
-                    rules={[
-                      {
-                        required: true,
-                        message: 'Please input your Password!',
-                      },
-                    ]}>
-                    <Input
-                      type='password'
-                      placeholder={'New Password'}
-                    />
-                  </Form.Item>
-                  <div style={{marginBottom:10}}>
-                      <span className='login-field-action-link ml-auto' onClick={() => navigate('/signin')}>
-                        Back to login
-                      </span>
-                    </div>
                   <Button
                     type='primary'
                     htmlType='submit'
                     className='login-form-btn'>
-                    <IntlMessages id='common.resetMyPassword' />
+                    SUBMIT
                   </Button>
                 </Form>
               </Col>

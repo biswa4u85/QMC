@@ -46,16 +46,13 @@ const ForgetPassword = () => {
                 <div className='login-styled-for-password'>
                   <div className='login-card-header'>
                     <h3>
-                      <IntlMessages id='common.forgetPassword' />
+                      FORGET USERNAME/PASSWORD?
                     </h3>
                   </div>
 
                   <div className='login-card-para'>
                     <p className='mb-0'>
-                      <IntlMessages id='common.forgetPasswordTextOne' />
-                    </p>
-                    <p className='mb-0'>
-                      <IntlMessages id='common.forgetPasswordTextTwo' />
+                      Enter your email address/ mobile number and we will send you an OTP to reset your password.
                     </p>
                   </div>
 
@@ -65,21 +62,30 @@ const ForgetPassword = () => {
                     initialValues={{ remember: true }}
                     onFinish={onFinish}>
                     <Form.Item
-                      name='email'
+                      name='Mobile'
                       className='form-field-lg'
                       rules={[
                         {
                           required: true,
-                          message: 'Please input your Email Address!',
+                          message: 'Please input your Mobile!',
                         },
                       ]}>
-                      <Input placeholder={messages['common.emailAddress']} />
+                      <Input placeholder="Mobile" />
                     </Form.Item>
-                    <div style={{marginBottom:10}}>
-                      <span className='login-field-action-link ml-auto' onClick={() => navigate('/signin')}>
-                        Back to login
-                      </span>
+                    <div className='login-card-header'>
+                      <h3>---OR---</h3>
                     </div>
+                    <Form.Item
+                      name='Email'
+                      className='form-field-lg'
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input your Email!',
+                        },
+                      ]}>
+                      <Input placeholder="Email" />
+                    </Form.Item>
                     <Button
                       type='primary'
                       htmlType='submit'

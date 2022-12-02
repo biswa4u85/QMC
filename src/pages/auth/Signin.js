@@ -3,14 +3,15 @@ import IntlMessages from '../../@crema/utility/IntlMessages';
 import { useIntl } from 'react-intl';
 import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import AppRowContainer from '../../@crema/core/AppRowContainer';
-import { Button, Card, Checkbox, Col, Form, Input } from 'antd';
+import { Button, Card, Col, Form, Input, Checkbox } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './index.style.less';
 import AppPageMetadata from '../../@crema/core/AppPageMetadata';
 import { ReactComponent as Logo } from '../../assets/user/login.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { adminLogin } from '../../store/AuthRedux'
-import dixcologo from "../../assets/user/dixco-logo.png";
+
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -35,6 +36,10 @@ const Signin = () => {
     console.log(`checked = ${e.target.checked}`);
   }
 
+  const onChange = (e) => {
+    console.log(`checked = ${e.target.checked}`);
+  };
+
   const { messages } = useIntl();
   return (
     <div className='login-pages'>
@@ -50,13 +55,13 @@ const Signin = () => {
               </Col>
               <Col xs={24} md={12}>
                 <div>
-                <img style={{width:110,height:110,marginBottom:32}} src={dixcologo} />
+                  <h3> Welcome back!</h3>
                 </div>
-                {/* <div className='login-card-header'>
-                  <h3>
-                    <IntlMessages id='common.login' />
-                  </h3>
-                </div> */}
+                <div className='login-card-header'>
+                  <h5>
+                    Sign In With
+                  </h5>
+                </div>
 
                 <Form
                   className='login-form'
@@ -72,9 +77,9 @@ const Signin = () => {
                     name='email'
                     className='form-field'
                     rules={[
-                      { required: true, message: 'Please input your Email!' },
+                      { required: true, message: 'Please input your name!' },
                     ]}>
-                    <Input placeholder={messages['common.email']} />
+                    <Input size="large" placeholder="Username or email" prefix={<UserOutlined />} />
                   </Form.Item>
 
                   <Form.Item
@@ -83,22 +88,15 @@ const Signin = () => {
                     rules={[
                       { required: true, message: 'Please input your Password!' },
                     ]}>
-                    <Input
-                      type='password'
-                      placeholder={messages['common.password']}
-                    />
+                    <Input placeholder="password" prefix={<LockOutlined />} />
                   </Form.Item>
 
-                  <Form.Item
-                    className='login-field-action'
-                    name='remember'
-                    valuePropName='checked'>
-                    <>
-                      <span className='login-field-action-link ml-auto' onClick={onGoToForgetPassword}>
-                        <IntlMessages id='common.forgetPassword' />
-                      </span>
-                    </>
+                  <Form.Item name="remember" valuePropName="checked" noStyle>
+                    <Checkbox>Remember me</Checkbox>
                   </Form.Item>
+
+                  <br />
+                  <br />
                   <Button
                     type='primary'
                     htmlType='submit'
@@ -106,7 +104,15 @@ const Signin = () => {
                     <IntlMessages id='common.login' />
                   </Button>
                 </Form>
+                <a href=''> Trouble logging in?</a>
+                <br />
+                <br />
+                <div>
+                  <a href=''>Haven’t signed up?</a>
+                  <Button>Sign Up!</Button>
+                </div>
               </Col>
+
             </AppRowContainer>
           </Card>
         </div>

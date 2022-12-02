@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import './shared/styles/crema.less';
+import "../src/styles/style.css";
 import {
   AppContextProvider,
   AppLayout,

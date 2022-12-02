@@ -5,11 +5,17 @@ const Signup = React.lazy(() => import('./Signup'));
 const ForgotPassword = React.lazy(() => import('./ForgetPassword'));
 const ResetPassword = React.lazy(() => import('./ResetPassword'));
 const UnlockScreen = React.lazy(() => import('./UnlockScreen'));
+const Forgetusername = React.lazy(() => import('./Forgetusername'));
+const Registration = React.lazy(() => import('./Registration'));
 
 export const authRouteConfig = [
   {
     path: '/home',
     element: <Home />,
+  },
+  {
+    path: '/registration',
+    element: <Registration />,
   },
   {
     path: '/signin',
@@ -21,7 +27,7 @@ export const authRouteConfig = [
   },
   {
     path: '/forget-password',
-    element: <ForgotPassword />,
+    element: <ForgotPassword />
   },
   {
     path: '/confirm-signup',
@@ -30,5 +36,9 @@ export const authRouteConfig = [
   {
     path: '/reset-password',
     element: <ResetPassword />,
+  },
+  {
+    path: '/forget-username',
+    element: <Forgetusername />,
   },
 ];
