@@ -19,12 +19,12 @@ const Signin = () => {
   const token = useSelector((state) => state.auth.token)
 
   const onFinish = (values) => {
-    dispatch(adminLogin(values))
+    // dispatch(adminLogin(values))
   };
 
   useEffect(() => {
     if (token) {
-      navigate('/dashboards/viewprofile');
+      // navigate('/dashboards/viewprofile');
     }
   }, [token]);
 
@@ -68,8 +68,8 @@ const Signin = () => {
                   name='basic'
                   initialValues={{
                     remember: true,
-                    email: 'someAdmin1@disco.com',
-                    password: 'somePassword@123',
+                    email: '',
+                    password: '',
                   }}
                   onFinish={onFinish}
                 >
@@ -104,12 +104,12 @@ const Signin = () => {
                     <IntlMessages id='common.login' />
                   </Button>
                 </Form>
-                <a href=''> Trouble logging in?</a>
+                <a onClick={() => navigate('/forget-password')}> Trouble logging in?</a>
                 <br />
                 <br />
                 <div>
-                  <a href=''>Haven’t signed up?</a>
-                  <Button>Sign Up!</Button>
+                  <a>Haven’t signed up?</a>
+                  <Button onClick={() => navigate('/registration')}>Sign Up!</Button>
                 </div>
               </Col>
 

@@ -27,46 +27,37 @@ const Registration = () => {
   };
   const description = 'This is a description.';
   const [value, setValue] = useState(1);
-  const onChanges = () => {
-    console.log('radio checked', e.target.value);
-    setValue(e.target.value);
-  };
 
+
+  const [step, setStep] = useState(0);
   const [isModal, setIsModal] = useState(false);
   const [isModal1, setIsModal1] = useState(false);
-
-
-
-
-
-
-
 
   return (
     <ListWapper>
       <div className='participation'>
         {/* 1t */}
-        <h3>REGISTRATION</h3>
-        <h3> Welcome to our easy 3 step registration!</h3>
+        {step === 0 && (<>
+          <h3>REGISTRATION</h3>
+          <h3> Welcome to our easy 3 step registration!</h3>
 
-        <h3>Are you currently teaching ?</h3>
-        <Space className='button-sec'>
-          <Button type="primary">Yes</Button>
-          <Button>No</Button>
-        </Space>
+          <h3>Are you currently teaching ?</h3>
+          <Space className='button-sec'>
+            <Button onClick={() => setStep(1)} type="primary">Yes</Button>
+            <Button onClick={() => navigate('/home')}>No</Button>
+          </Space>
+        </>)}
 
-        <Steps current={current}
-          onChange={onChange}
-        >
+        {(step === 1 || step === 2 || step === 3) && (<Steps current={current}>
           <Step title="Personal Details" description={'Step 1'} />
-          <Step title="Verification" description={'Step 2'} subTitle="Left 00:00:08" />
+          <Step title="Verification" description={'Step 2'} />
           <Step title="Registration" description={'Step 3'} />
-        </Steps>
+        </Steps>)}
 
 
 
         {/* 1 */}
-        <Card className='login-card login-card-lg'>
+        {step === 1 && (<Card className='login-card login-card-lg'>
           <AppRowContainer>
             <Col xs={24} lg={24}>
               <div className='form-sec'>
@@ -243,7 +234,7 @@ const Registration = () => {
                     <Button
                       type='primary'
                       className='login-form-btn'
-                      htmlType='submit'>
+                      htmlType='submit' onClick={() => {setCurrent(1); setStep(2)}}>
                       Verify details
                     </Button>
                   </Space>
@@ -251,127 +242,127 @@ const Registration = () => {
               </div>
             </Col>
           </AppRowContainer>
-        </Card>
+        </Card>)}
 
 
         {/* 2 */}
-        <h3>Please enter the one-Time Password to Verify your account</h3>
-        <p>A one-Time Passwordto has been send to 98531212*32</p>
-        <div className='form-sec'>
-          <Form
-            className='login-form mb-0'
-            name='basic'
-            initialValues={{ remember: true }}
-            onFinish={onFinish}>
+        {step === 2 && (<>
+          <h3>Please enter the one-Time Password to Verify your account</h3>
+          <p>A one-Time Passwordto has been send to 98531212*32</p>
+          <div className='form-sec'>
+            <Form
+              className='login-form mb-0'
+              name='basic'
+              initialValues={{ remember: true }}
+              onFinish={onFinish}>
 
-            <Form.Item
-              name='Password'
-              className='form-field'
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input the Password!',
-                },
-              ]}>
-              <Input
-                placeholder="Password"
-              />
-            </Form.Item>
+              <Form.Item
+                name='Password'
+                className='form-field'
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input the Password!',
+                  },
+                ]}>
+                <Input
+                  placeholder="Password"
+                />
+              </Form.Item>
 
-            <Space className='button-sec'>
-              <Button type="primary" onClick={() => setIsModal(true)}
-                htmlType='submit'
-                className='login-form-btn'
-              >
-                Validate
-              </Button>
+              <Space className='button-sec'>
+                <Button type="primary" onClick={() => {setCurrent(2); setStep(3)}}
+                  htmlType='submit'
+                  className='login-form-btn'
+
+                >
+                  Validate
+                </Button>
 
 
-              <Button
-                htmlType='submit'
-                className='login-form-btn'
-              >
-                No
-              </Button>
-            </Space>
+                <Button
+                  htmlType='submit'
+                  className='login-form-btn'
+                >
+                  No
+                </Button>
+              </Space>
 
-            <div className='button-sec'>
-              <Button
-                type='primary'
-                htmlType='submit'
-                className='login-form-btn'>
-                Entered wrong mobile number ?
-              </Button>
-            </div>
-          </Form>
-        </div>
+              <div className='button-sec'>
+                <Button
+                  type='primary'
+                  htmlType='submit'
+                  className='login-form-btn'>
+                  Entered wrong mobile number ?
+                </Button>
+              </div>
+            </Form>
+          </div></>)}
 
         {/* 3d */}
+        {step === 3 && (<>
+          <h3>Your details are verified <br />Pick your username and password to start making questions.</h3>
+          <div className='form-sec'>
+            <Form
+              className='login-form mb-0'
+              name='basic'
+              initialValues={{ remember: true }}
+              onFinish={onFinish}>
 
-        <h3>Your details are verified <br />Pick your username and password to start making questions.</h3>
-        <div className='form-sec'>
-          <Form
-            className='login-form mb-0'
-            name='basic'
-            initialValues={{ remember: true }}
-            onFinish={onFinish}>
+              <Form.Item
+                name='Username'
+                className='form-field'
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input the Username!',
+                  },
+                ]}>
+                <Input
+                  placeholder="Username"
+                />
+              </Form.Item>
 
-            <Form.Item
-              name='Username'
-              className='form-field'
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input the Username!',
-                },
-              ]}>
-              <Input
-                placeholder="Username"
-              />
-            </Form.Item>
+              <Form.Item
+                name='Set Password'
+                className='form-field'
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input the Set Password!',
+                  },
+                ]}>
+                <Input
+                  placeholder="Set Password"
+                />
+              </Form.Item>
 
-            <Form.Item
-              name='Set Password'
-              className='form-field'
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input the Set Password!',
-                },
-              ]}>
-              <Input
-                placeholder="Set Password"
-              />
-            </Form.Item>
-
-            <Form.Item
-              name='Confirm password'
-              className='form-field'
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input the Confirm password!',
-                },
-              ]}>
-              <Input
-                placeholder="Confirm password"
-              />
-            </Form.Item>
-          </Form>
-        </div>
-        <h3>Terms and Conditions</h3>
-        <p>Terms and Conditions These terms and conditions outline the rules and regulations for the use of The CBSE's W ebsite, located at http://qmc.com. Cookies: The website uses cookies to help personalize your online experience. By accessing Question Making Competition Website, you agreed to use the required cookies. A cookie is a text file that is placed on your hard disk by a web page server. Cookies cannot be used to run programs or deliver viruses to your computer. Cookies are uniquely assigned to you and can only be read by a web server in the domain that issued the cookie to you.A cookie is a text file that is placed on your hard disk by a web page server. Cookies cannot be used to run programs or deliver viruses to your computer. Cookies are uniquely assigned to you and can only be read by a web server in the domain that issued the cookie to you.</p>
-        <Checkbox onChange={onChange}>Checkbox</Checkbox>
-        <div className='button-sec'>
-          <Button type="primary" onClick={() => setIsModal1(true)}
-            htmlType='submit'
-            className='login-form-btn'
-          >
-            Finish Registration
-          </Button>
-
-        </div>
-
+              <Form.Item
+                name='Confirm password'
+                className='form-field'
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input the Confirm password!',
+                  },
+                ]}>
+                <Input
+                  placeholder="Confirm password"
+                />
+              </Form.Item>
+            </Form>
+          </div>
+          <h3>Terms and Conditions</h3>
+          <p>Terms and Conditions These terms and conditions outline the rules and regulations for the use of The CBSE's W ebsite, located at http://qmc.com. Cookies: The website uses cookies to help personalize your online experience. By accessing Question Making Competition Website, you agreed to use the required cookies. A cookie is a text file that is placed on your hard disk by a web page server. Cookies cannot be used to run programs or deliver viruses to your computer. Cookies are uniquely assigned to you and can only be read by a web server in the domain that issued the cookie to you.A cookie is a text file that is placed on your hard disk by a web page server. Cookies cannot be used to run programs or deliver viruses to your computer. Cookies are uniquely assigned to you and can only be read by a web server in the domain that issued the cookie to you.</p>
+          <Checkbox onChange={onChange}>Checkbox</Checkbox>
+          <div className='button-sec'>
+            <Button type="primary" onClick={() => navigate('/home')}
+              htmlType='submit'
+              className='login-form-btn'
+            >
+              Finish Registration
+            </Button>
+          </div></>)}
 
       </div>
 

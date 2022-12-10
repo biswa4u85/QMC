@@ -8,7 +8,7 @@ import { dashboardConfig } from './dashboard';
 import { errorPagesConfigs } from './errorPages';
 
 const authorizedStructure = {
-  fallbackPath: '/signin',
+  fallbackPath: '/home',
   unAuthorizedComponent: <Error403 />,
   routes: [
     ...dashboardConfig,
