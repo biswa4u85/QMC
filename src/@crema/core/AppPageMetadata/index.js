@@ -10,7 +10,7 @@ const SITE_URL =
 
 const FACEBOOK_APP_ID = 'XXXXXXXXX';
 
-const defaultTitle = 'Disco Shots Admin';
+const defaultTitle = 'QMC Admin';
 const defaultDescription =
   'Crema Ant is an Ant design based admin template. buid with CRA all ant library. ';
 const defaultImage =
